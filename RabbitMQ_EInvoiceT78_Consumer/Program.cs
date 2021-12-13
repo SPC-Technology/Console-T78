@@ -68,6 +68,7 @@ namespace RabbitMQ_EInvoiceT78_Consumer
 
 
 
+                        
                         Console.WriteLine("Consumer: " + message+"           ");
                     };
 

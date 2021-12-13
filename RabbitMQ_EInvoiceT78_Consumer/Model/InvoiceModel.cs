@@ -16,5 +16,10 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Model
         public string MCCQT { get; set; }
         public string fileName { get; set; }
 
+        public string CusMail { get; set; }
+        public string ClientName { get; set; }
+        public string Serial { get; set; }
+        public string InvNo { get; set; }
+
     }
 }

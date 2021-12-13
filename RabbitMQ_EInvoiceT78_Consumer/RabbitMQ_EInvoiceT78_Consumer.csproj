@@ -41,6 +41,18 @@
       <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7c40f8a8ef7b9fe4\Csla.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Utils.v21.1, Version=21.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DotNetZip, Version=1.15.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="DynamicDotNetTWAIN, Version=5.4.0.929, Culture=neutral, PublicKeyToken=298ad97013b423eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\DynamicDotNetTWAIN.dll</HintPath>
+    </Reference>
+    <Reference Include="Markdig, Version=0.22.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\Markdig.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.2.0.6\lib\net45\Microsoft.Azure.KeyVault.dll</HintPath>
     </Reference>
@@ -67,6 +79,14 @@
     <Reference Include="RabbitMQ.Client, Version=6.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <HintPath>..\packages\RabbitMQ.Client.6.2.2\lib\net461\RabbitMQ.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Scriban, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\Scriban.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGrid, Version=9.21.1.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SendGrid.dll</HintPath>
+    </Reference>
     <Reference Include="SPC.CloudAuthentication, Version=4.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.CloudAuthentication.dll</HintPath>
@@ -82,6 +102,10 @@
     <Reference Include="SPC.Helper, Version=4.7.6.996, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="SPC.Mail, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Mail.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.Azure, Version=4.7.6.984, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

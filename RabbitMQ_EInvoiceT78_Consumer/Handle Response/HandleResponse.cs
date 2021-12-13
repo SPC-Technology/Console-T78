@@ -164,13 +164,20 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
             objInv.ProformaNo = (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTin") where itm.GetString("TTruong") == "ProformaNo" select itm.GetString("DLieu")).FirstOrDefault();
             objInv.MaThongDiep = logObj.MaThongDiepThamChieu;
             objInv.fileName=(from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTin") where itm.GetString("TTruong") == "ExtDesc2" select itm.GetString("DLieu")).FirstOrDefault();
-            
+            objInv.CusMail= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTin") where itm.GetString("TTruong") == "Notes" select itm.GetString("DLieu")).FirstOrDefault();
+            objInv.Serial= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTChung") select itm.GetString("KHHDon")).FirstOrDefault();
+            objInv.InvNo= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTChung") select itm.GetString("SHDon")).FirstOrDefault();
+            objInv.InvoiceDate= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTChung") select itm.GetString("NLap")).FirstOrDefault();
+            objInv.ClientName= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("NDHDon").Descendants("NMua") select itm.GetString("Ten")).FirstOrDefault();
             //Upload pdfFile and send mail to customer
             var invRequest = new InvoiceRequestCode();
-            await invRequest.UploadSignedPdfXml(objInv,MST);
-
+            await invRequest.UploadSignedPdf(objInv,MST);
+            //Upload xml to cloud
+            await invRequest.UploadSignedXml(message,objInv,MST);
             //update MCCQT and satus to Invoie Request Code table cloud
             await invRequest.UpdateMCCQTAndChangeStatus(objInv, MST);
+
+            //Delete file in server
 
             return logObj;
         }
