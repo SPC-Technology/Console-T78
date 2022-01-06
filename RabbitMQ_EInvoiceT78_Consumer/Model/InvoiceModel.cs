@@ -20,6 +20,9 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Model
         public string ClientName { get; set; }
         public string Serial { get; set; }
         public string InvNo { get; set; }
+        public string Address { get; set; }
+        public string KHMSHDon { get; set; }
+
 
     }
 }

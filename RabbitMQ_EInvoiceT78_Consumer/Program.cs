@@ -46,13 +46,11 @@ namespace RabbitMQ_EInvoiceT78_Consumer
                 {
                     var consumer = new EventingBasicConsumer(channel);
                     consumer.Received += (model, ea) =>
-                    {
+                   {
                         var body = ea.Body.ToArray();
                         var message = Encoding.UTF8.GetString(body);
 
-
-
-                        var messageFeedBack = new Handle_Response.HandleResponse().GetResponse(message).Result;
+                       var messageFeedBack = new Handle_Response.HandleResponse().GetResponse(message).Result;
 
                         if (messageFeedBack == TVAN_CONST.TAG_QUEUE.SUCCESS)
                         {
@@ -65,8 +63,6 @@ namespace RabbitMQ_EInvoiceT78_Consumer
                         {
                             channel.BasicNack(deliveryTag: ea.DeliveryTag, multiple: false, requeue: true);
                         }
-
-
 
                         
                         Console.WriteLine("Consumer: " + message+"           ");

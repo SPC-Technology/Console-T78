@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static RabbitMQ_EInvoiceT78_Consumer.Base.TVAN_CONST;
 
 namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
 {
@@ -16,10 +17,15 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
             try
             {
                 //back up spc
-                var tableService1 = await SPC.ServicesContainer.ShortCut.AzureTable.GetTableServiceAsync($"{TVAN_CONST.STR_StorageAccount}", $"{TVAN_CONST.EventTableCloudResponse.EventRegisterInvoice}");
-                await tableService1.CreateTableIfNotExistsAsync();
-                var _dic1 =AddInsertResponseToLogEvent(obj);
-                await tableService1.WriteAsync(_dic1);
+                if(obj.MLTDiep==MA_THONG_DIEP.RegisterInvoice || obj.MLTDiep==MA_THONG_DIEP.RecieveRegisterInvoice || obj.MLTDiep==MA_THONG_DIEP.AcceptRegisterInvoice)
+                {
+                    await PushTechnicalBackup(obj, TVAN_CONST.EventTableCloudResponse.EventRegisterInvoice);
+                }
+                if(obj.MLTDiep==MA_THONG_DIEP.SuccessRequestCodeInv ||obj.MLTDiep==MA_THONG_DIEP.ErrorRequestCodeInv)
+                {
+                    await PushTechnicalBackup(obj, TVAN_CONST.EventTableCloudResponse.EventInvoiceWithCode);
+                }
+                
 
                 //push to table user
                 var tableName = string.Format("{0}{1}", TVAN_CONST.EventTableCloudResponse.EventInvoice, TaxCode.Replace("-", ""));
@@ -32,7 +38,15 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
             catch (Exception ex)
             {
                 return TVAN_CONST.TAG_QUEUE.ERROR;
-            }
+            } 
+        }
+
+        private async Task PushTechnicalBackup(LogEventModel obj,string tableName)
+        {
+            var tableService1 = await SPC.ServicesContainer.ShortCut.AzureTable.GetTableServiceAsync($"{TVAN_CONST.STR_StorageAccount}", $"{tableName}");
+            await tableService1.CreateTableIfNotExistsAsync();
+            var _dic1 = AddInsertResponseToLogEvent(obj);
+            await tableService1.WriteAsync(_dic1);
         }
 
         //Addinsert data to table cloud log event

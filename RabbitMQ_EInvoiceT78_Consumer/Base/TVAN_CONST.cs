@@ -60,6 +60,9 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Base
             public const string Description_AcceptRequestCodeInv = "Thông điệp thông báo kết quả cấp mã hóa đơn điện tử của cơ quan thuế";
             public const string Description_ErrorRequestCodeInv = "Thông điệp thông báo mẫu số 01/TB-KTDL về việc kết quả kiểm tra dữ liệu hóa đơn điện tử";
 
+            //Erorr Invoice report 
+            public const string Description_ReportErorrInvoice = "Thông điệp gửi thông báo về việc tiếp nhận và kết quả xử lý về việc hóa đơn điện tử đã lập có sai sót";
+
             // Technical Feedback message
             public const string TechnicalFeedback = "Thông điệp phản hồi kỹ thuật";
 
@@ -86,6 +89,8 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Base
                         return Description_AcceptRequestCodeInv;
                     case 204:
                         return Description_ErrorRequestCodeInv;
+                    case 301:
+                        return Description_ReportErorrInvoice;
                     case 999:
                         return TechnicalFeedback;
 
@@ -101,10 +106,14 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Base
             public const string DAXULI = "Đã xử lý";
             public const string DKTHANHCONG = "Đăng ký thành công";
             public const string DKLOI = "Đăng ký lỗi";
-            public const string SUCCESS_REQUEST_CODE = "Cấp mã thành công";
+            public const string SUCCESS_REQUEST_CODE = "Issued";
             public const string ERROR_REQUEST_CODE = "Cấp mã không thành công";
             public const string SUCCESS_REQUEST = "10";
             public const string ERROR_REQUEST = "11";
+            public const string CHECK_DATA_ERROR_INVOICE = "Kiểm tra dữ liệu hợp lệ";
+            public const string FAILED_HANDLE_ERROR = "Kiểm tra dữ liệu xảy ra lỗi";
+            public const string ACCEPT_ERROR_INVOICE_REPORT = "Chấp nhận thông báo sai sót";
+            public const string NOT_ACCEPT_ERROR_INVOICE_REPORT = "Không chấp nhận thông báo sai sót";
         }
 
         public class MA_THONG_DIEP
@@ -122,6 +131,9 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Base
             public const string SendInvoiceRequestCode = "200";
             public const string SuccessRequestCodeInv = "202";
             public const string ErrorRequestCodeInv = "204";
+
+            //Error invoice report
+            public const string SuccessErrorInvoiceReport = "301";
         }
 
         public class TAG_QUEUE

@@ -70,78 +70,77 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3792e4904564\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RabbitMQ.Client, Version=6.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <HintPath>..\packages\RabbitMQ.Client.6.2.2\lib\net461\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="Scriban, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\Scriban.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\Scriban.dll</HintPath>
     </Reference>
     <Reference Include="SendGrid, Version=9.21.1.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SendGrid.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SendGrid.dll</HintPath>
     </Reference>
     <Reference Include="SPC.CloudAuthentication, Version=4.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.CloudAuthentication.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.CloudAuthentication.dll</HintPath>
     </Reference>
     <Reference Include="SPC.CORE.Services, Version=4.7.6.996, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.CORE.Services.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.CORE.Services.dll</HintPath>
     </Reference>
     <Reference Include="SPC.DocumentAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.DocumentAPI.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.DocumentAPI.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Helper, Version=4.7.6.996, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Helper.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Helper.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Mail, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Mail.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Mail.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.Azure, Version=4.7.6.984, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Phoebus.Azure.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.Azure.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.PAF, Version=4.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Phoebus.PAF.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.PAF.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.PBO, Version=3.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Phoebus.PBO.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.PBO.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.QDBO, Version=3.5.5.380, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Phoebus.QDBO.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.QDBO.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.RE, Version=4.5.5.380, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Phoebus.RE.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.RE.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.SOP, Version=4.5.5.380, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Phoebus.SOP.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.SOP.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.TBO, Version=4.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Phoebus.TBO.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.TBO.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.UsrMan, Version=4.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.Phoebus.UsrMan.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.UsrMan.dll</HintPath>
     </Reference>
     <Reference Include="SPC.WindowsUI.UCBase, Version=4.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\SPC.WindowsUI.UCBase.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.WindowsUI.UCBase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">

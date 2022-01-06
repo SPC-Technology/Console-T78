@@ -52,6 +52,11 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
                             var pushEvent = new DataAccess();
                             return await pushEvent.PushEventFeedBack(await HandleResponseContentErrorInvoiceRequestCodeFormCQT(message), MST);
                         }
+                    case MA_THONG_DIEP.SuccessErrorInvoiceReport:
+                        {
+                            var pushEvent= new DataAccess();
+                            return await pushEvent.PushEventFeedBack(await HandleResponseErrorInvoiceReport(message), MST);
+                        }
                 }
                 return TVAN_CONST.TAG_QUEUE.ERROR;
             }
@@ -110,7 +115,7 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
             logObj = GetTTChungTechnicalFeedBack(doc);
             logObj.NgayGiaoDich = (from itm in doc.Descendants("DLieu").Descendants("TBao").Descendants("DLTBao") select itm.GetString("TGNhan")).FirstOrDefault();
             var MaLoi = (from itm in doc.Descendants("DLieu").Descendants("TBao").Descendants("DLTBao") select itm.GetString("THop")).FirstOrDefault();
-            if (MaLoi == "1")
+            if (MaLoi == "1" || MaLoi=="3")
             {
                 logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.DAXULI;
             }
@@ -132,7 +137,7 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
 
             logObj.NgayGiaoDich = (from itm in doc.Descendants("DLieu").Descendants("TBao").Descendants("STBao") select itm.GetString("NTBao")).FirstOrDefault();
             var MaLoi = (from itm in doc.Descendants("DLieu").Descendants("TBao").Descendants("DLTBao") select itm.GetString("TTXNCQT")).FirstOrDefault();
-            if (MaLoi == "1")
+            if (MaLoi == "1"||MaLoi=="3")
             {
                 logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.DKTHANHCONG;
                 var updateStatusMaster = new RegisterInvoiceEvent();
@@ -157,27 +162,30 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
             logObj = GetTTChungTechnicalFeedBack(doc);
             logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.SUCCESS_REQUEST_CODE;
             logObj.NgayGiaoDich = GetTimeStamp(message);
-
+           
             //Handle push xml signed file and pdf file to Cloud
             var objInv = new InvoiceModel();
             objInv.MCCQT = (from itm in doc.Descendants("DLieu").Descendants("HDon") select itm.GetString("MCCQT")).FirstOrDefault();
             objInv.ProformaNo = (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTin") where itm.GetString("TTruong") == "ProformaNo" select itm.GetString("DLieu")).FirstOrDefault();
             objInv.MaThongDiep = logObj.MaThongDiepThamChieu;
-            objInv.fileName=(from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTin") where itm.GetString("TTruong") == "ExtDesc2" select itm.GetString("DLieu")).FirstOrDefault();
+            objInv.fileName = (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTin") where itm.GetString("TTruong") == "PDFFileName" select itm.GetString("DLieu")).FirstOrDefault();
             objInv.CusMail= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTin") where itm.GetString("TTruong") == "Notes" select itm.GetString("DLieu")).FirstOrDefault();
             objInv.Serial= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTChung") select itm.GetString("KHHDon")).FirstOrDefault();
-            objInv.InvNo= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTChung") select itm.GetString("SHDon")).FirstOrDefault();
+           objInv.InvNo= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTChung") select itm.GetString("SHDon")).FirstOrDefault();
             objInv.InvoiceDate= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTChung") select itm.GetString("NLap")).FirstOrDefault();
             objInv.ClientName= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("NDHDon").Descendants("NMua") select itm.GetString("Ten")).FirstOrDefault();
+            objInv.Address= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("NDHDon").Descendants("NMua") select itm.GetString("DChi")).FirstOrDefault();
+            objInv.KHMSHDon= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTChung") select itm.GetString("KHMSHDon")).FirstOrDefault();
             //Upload pdfFile and send mail to customer
             var invRequest = new InvoiceRequestCode();
             await invRequest.UploadSignedPdf(objInv,MST);
             //Upload xml to cloud
-            await invRequest.UploadSignedXml(message,objInv,MST);
+            objInv.fileName=await invRequest.UploadSignedXml(message,objInv,MST);
             //update MCCQT and satus to Invoie Request Code table cloud
             await invRequest.UpdateMCCQTAndChangeStatus(objInv, MST);
 
             //Delete file in server
+            await invRequest.DeleteFileInServer();
 
             return logObj;
         }
@@ -187,14 +195,57 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
             var logObj = new Log_Event.Log_Evnet_Model.LogEventModel();
             var doc = XElement.Parse(message);
             var MST = (from itm in doc.Descendants("TTChung") select itm.GetString("MST")).FirstOrDefault();
-            logObj = GetTTChungTechnicalFeedBack(doc);
-            logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.ERROR_REQUEST_CODE;
-            logObj.NgayGiaoDich = GetTimeStamp(message);
+            var LTBao = (from itm in doc.Descendants("DLieu").Descendants("TBao").Descendants("DLTBao") select itm.GetString("LTBao")).FirstOrDefault();
+            if(LTBao=="1")
+            {
+                logObj = GetTTChungTechnicalFeedBack(doc);
+                logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.ERROR_REQUEST_CODE;
+                logObj.NgayGiaoDich = GetTimeStamp(message);
 
-            //Update status to Invoie Request Code table cloud
-            var invRequest = new InvoiceRequestCode();
-            await invRequest.ChangeStatusError(logObj.MaThongDiepThamChieu, MST);
-            return logObj;
+                //Update status to Invoie Request Code table cloud
+                var invRequest = new InvoiceRequestCode();
+                await invRequest.ChangeStatusError(logObj.MaThongDiepThamChieu, MST);
+                return logObj;
+            }
+            else if(LTBao=="9")
+            {
+                logObj = GetTTChungTechnicalFeedBack(doc);
+                logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.FAILED_HANDLE_ERROR;
+                logObj.NgayGiaoDich = GetTimeStamp(message);
+
+                //Update status to Invoie Request Code table cloud
+                var invRequest = new InvoiceRequestCode();
+                await invRequest.ChangeStatusError(logObj.MaThongDiepThamChieu, MST);
+                return logObj;
+            }
+            else
+            {
+                logObj = GetTTChungTechnicalFeedBack(doc);
+                logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.CHECK_DATA_ERROR_INVOICE;
+                logObj.NgayGiaoDich = GetTimeStamp(message);
+                return logObj;
+            }
+        }
+
+        private async Task<LogEventModel> HandleResponseErrorInvoiceReport(string message)
+        {
+            var logObj = new Log_Event.Log_Evnet_Model.LogEventModel();
+            var doc = XElement.Parse(message);
+            var MST = (from itm in doc.Descendants("TTChung") select itm.GetString("MST")).FirstOrDefault();
+            logObj = GetTTChungTechnicalFeedBack(doc);
+            var STTThe = (from itm in doc.Descendants("DLieu").Descendants("TBao").Descendants("DLTBao") select itm.GetString("STTThe")).FirstOrDefault();
+            if (doc?.Element("DLieu")?.Element("TBao")?.Element("DLTBao")?.Element("DSLDKTNhan") == null)
+            {
+                logObj.NgayGiaoDich = GetTimeStamp(message);
+                logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.ACCEPT_ERROR_INVOICE_REPORT;
+                return logObj;
+            }
+            else
+            {
+                logObj.NgayGiaoDich = GetTimeStamp(message);
+                logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.NOT_ACCEPT_ERROR_INVOICE_REPORT;
+                return logObj;
+            }
         }
 
         //Get timestamp server
