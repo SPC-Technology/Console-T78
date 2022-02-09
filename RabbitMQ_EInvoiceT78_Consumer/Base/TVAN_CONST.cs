@@ -25,7 +25,7 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Base
             public const string STR_SendEinvoiceWithoutCodeT78 = "EinvoiceWithoutCodeT78";
 
             //Table cloud send error invoice 
-            public const string STR_SendEinvoiceErrorT78 = "EivoiceErrorT78";
+            public const string STR_SendEinvoiceErrorT78 = "EinvoiceErrorT78";
 
             //Table cloud send Report invoice
             public const string STR_SendReportEinvoiceT78 = "ReportEinvoiceT78";

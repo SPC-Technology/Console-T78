@@ -28,6 +28,15 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
             await tableService.WriteAsync(data);
         }
 
+        public async Task UpdateSoThongBaoSaiSot(string MaThongDiep,string SoThongBao, string MST)
+        {
+            var tableService = await SPC.ServicesContainer.ShortCut.AzureTable.GetTableServiceAsync($"{TVAN_CONST.STR_StorageAccount}", $"{TVAN_CONST.TableCloudRequest.STR_SendEinvoiceErrorT78}{MST.Replace("-", "")}");
+            await tableService.CreateTableIfNotExistsAsync();
+            var data = await tableService.ReadAsync($"{MST}:{MaThongDiep}");
+            data["SOTHONGBAO"] = SoThongBao;
+            await tableService.WriteAsync(data);
+        }
+
 
         public async Task ChangeStatusError(string MaThongDiep, string MST)
         {
@@ -79,8 +88,11 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
             var rootFilePath = string.Format($"{System.IO.Directory.GetCurrentDirectory()}\\SignedFile");
             var theXmlFileName = string.Format($"{rootFilePath}\\{pInv.fileName.Replace("pdf", "xml")}");
             var theDoc = new XmlDocument();
+            //var a = XElement.Parse(message).Descendants("HDon").FirstOrDefault().ToString().Replace("\r\n", "");
+            //theDoc.PreserveWhitespace = false;
             theDoc.LoadXml(message);
-            theDoc.Save(theXmlFileName);
+            File.WriteAllText(theXmlFileName, theDoc.InnerXml);
+            //theDoc.Save(theXmlFileName);
             var cmd = new pbs.Helper.pbsCmdArgs($"pbs.BO.Azure.BlobUploader?$account=lavadata&$permission=B&$container=signed-{MST.ToLower()}&$file={theXmlFileName}&$mode=I");
             var runable = new pbs.BO.Azure.BlobUploader();
             runable.Run(cmd);

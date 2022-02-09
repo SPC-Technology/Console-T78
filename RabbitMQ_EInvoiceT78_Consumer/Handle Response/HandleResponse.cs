@@ -96,7 +96,7 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
             {
                 logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.LOI;
                 var updateStatusMaster = new RegisterInvoiceEvent();
-                await updateStatusMaster.UpdateStatusRegisterInvoiceMaster(logObj.MaThongDiepThamChieu, MST, TVAN_CONST.STATUS_RESPONSE.LOI);
+                //await updateStatusMaster.UpdateStatusRegisterInvoiceMaster(logObj.MaThongDiepThamChieu, MST, TVAN_CONST.STATUS_RESPONSE.LOI);
             }
             else
             {
@@ -178,7 +178,7 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
             objInv.KHMSHDon= (from itm in doc.Descendants("DLieu").Descendants("HDon").Descendants("TTChung") select itm.GetString("KHMSHDon")).FirstOrDefault();
             //Upload pdfFile and send mail to customer
             var invRequest = new InvoiceRequestCode();
-            await invRequest.UploadSignedPdf(objInv,MST);
+            //await invRequest.UploadSignedPdf(objInv,MST);
             //Upload xml to cloud
             objInv.fileName=await invRequest.UploadSignedXml(message,objInv,MST);
             //update MCCQT and satus to Invoie Request Code table cloud
@@ -236,8 +236,11 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
             var STTThe = (from itm in doc.Descendants("DLieu").Descendants("TBao").Descendants("DLTBao") select itm.GetString("STTThe")).FirstOrDefault();
             if (doc?.Element("DLieu")?.Element("TBao")?.Element("DLTBao")?.Element("DSLDKTNhan") == null)
             {
+                string sothongbao = (from itm in doc.Descendants("DLieu").Descendants("TBao").Descendants("STBao") select itm.GetString("So")).FirstOrDefault();
                 logObj.NgayGiaoDich = GetTimeStamp(message);
                 logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.ACCEPT_ERROR_INVOICE_REPORT;
+                var invRequest = new InvoiceRequestCode();
+                await invRequest.UpdateSoThongBaoSaiSot(logObj.MaThongDiepThamChieu, sothongbao, MST);
                 return logObj;
             }
             else

@@ -70,7 +70,7 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3792e4904564\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7f3b5706de9b8864\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
