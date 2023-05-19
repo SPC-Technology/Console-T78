@@ -8,6 +8,9 @@ using System.Net.Security;
 using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Linq;
+using pbs.Helper;
 
 namespace RabbitMQ_EInvoiceT78_Consumer
 {
@@ -26,7 +29,7 @@ namespace RabbitMQ_EInvoiceT78_Consumer
                 hostsName.Add("14.225.17.176");
                 hostsName.Add("14.225.17.177");
                 hostsName.Add("14.225.17.178");
-                var factory = new ConnectionFactory()
+                var factory = new RabbitMQ.Client.ConnectionFactory()
                 {
                     Uri = new Uri(URI),
                     Ssl = new SslOption()
@@ -47,25 +50,25 @@ namespace RabbitMQ_EInvoiceT78_Consumer
                     var consumer = new EventingBasicConsumer(channel);
                     consumer.Received += (model, ea) =>
                    {
-                        var body = ea.Body.ToArray();
+                       var body = ea.Body.ToArray();
                         var message = Encoding.UTF8.GetString(body);
 
                        var messageFeedBack = new Handle_Response.HandleResponse().GetResponse(message).Result;
 
-                        if (messageFeedBack == TVAN_CONST.TAG_QUEUE.SUCCESS)
-                        {
-                            // Ack: thông báo đã xử lý message thành công và xóa khỏi queue
-                            channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
-                        }
+                       if (messageFeedBack == TVAN_CONST.TAG_QUEUE.SUCCESS)
+                       {
+                           // Ack: thông báo đã xử lý message thành công và xóa khỏi queue
+                           channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                       }
 
-                        //Nack: thông báo trả lại message cho queue với trường hợp xử lý lỗi hoặc muốn xử lý sau, mess sẽ push lại queue
-                        if (messageFeedBack == TVAN_CONST.TAG_QUEUE.ERROR)
-                        {
-                            channel.BasicNack(deliveryTag: ea.DeliveryTag, multiple: false, requeue: true);
-                        }
+                       //Nack: thông báo trả lại message cho queue với trường hợp xử lý lỗi hoặc muốn xử lý sau, mess sẽ push lại queue
+                       if (messageFeedBack == TVAN_CONST.TAG_QUEUE.ERROR)
+                       {
+                           channel.BasicNack(deliveryTag: ea.DeliveryTag, multiple: false, requeue: true);
+                       }
 
-                        
-                        Console.WriteLine("Consumer: " + message+"           ");
+
+                       Console.WriteLine("Consumer: " + message+"           ");
                     };
 
                     // autoAck: true : đọc xong sẽ xóa trên queue, false: vẫn giữ lại trên queue

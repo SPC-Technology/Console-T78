@@ -196,9 +196,9 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
             var doc = XElement.Parse(message);
             var MST = (from itm in doc.Descendants("TTChung") select itm.GetString("MST")).FirstOrDefault();
             var LTBao = (from itm in doc.Descendants("DLieu").Descendants("TBao").Descendants("DLTBao") select itm.GetString("LTBao")).FirstOrDefault();
-            if(LTBao=="1")
+            logObj = GetTTChungTechnicalFeedBack(doc);
+            if (LTBao=="1")
             {
-                logObj = GetTTChungTechnicalFeedBack(doc);
                 logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.ERROR_REQUEST_CODE;
                 logObj.NgayGiaoDich = GetTimeStamp(message);
 
@@ -207,9 +207,8 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
                 await invRequest.ChangeStatusError(logObj.MaThongDiepThamChieu, MST);
                 return logObj;
             }
-            else if(LTBao=="9")
+            else if(LTBao=="9" || LTBao=="3" || LTBao=="4")
             {
-                logObj = GetTTChungTechnicalFeedBack(doc);
                 logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.FAILED_HANDLE_ERROR;
                 logObj.NgayGiaoDich = GetTimeStamp(message);
 
@@ -218,13 +217,15 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
                 await invRequest.ChangeStatusError(logObj.MaThongDiepThamChieu, MST);
                 return logObj;
             }
-            else
+            else if(LTBao=="2")
             {
-                logObj = GetTTChungTechnicalFeedBack(doc);
                 logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.CHECK_DATA_ERROR_INVOICE;
                 logObj.NgayGiaoDich = GetTimeStamp(message);
+                var invRequest = new InvoiceRequestCode();
+                await invRequest.UpdateInvoiceStatusInvoiceWithoutCode(logObj.MaThongDiepThamChieu, MST);
                 return logObj;
             }
+            return logObj;
         }
 
         private async Task<LogEventModel> HandleResponseErrorInvoiceReport(string message)

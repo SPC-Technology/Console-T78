@@ -43,7 +43,7 @@ namespace RabbitMQ_EInvoiceT78_Consumer.TimeStamp_Server
                     );
             byte[] reqData = request.GetEncoded();
 
-            HttpWebRequest httpReq = (HttpWebRequest)WebRequest.Create("http://time.certum.pl");
+            HttpWebRequest httpReq = (HttpWebRequest)WebRequest.Create("http://timestamp.digicert.com");
             httpReq.Method = "POST";
             httpReq.ContentType = "application/timestamp-query";
             httpReq.ContentLength = reqData.Length;

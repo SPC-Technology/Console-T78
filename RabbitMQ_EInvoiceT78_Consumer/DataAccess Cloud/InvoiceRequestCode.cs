@@ -28,6 +28,22 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
             await tableService.WriteAsync(data);
         }
 
+        public async Task UpdateInvoiceStatusInvoiceWithoutCode(string MaThongDiep,  string MST)
+        {
+            var tableService = await SPC.ServicesContainer.ShortCut.AzureTable.GetTableServiceAsync($"{TVAN_CONST.STR_StorageAccount}", $"{TVAN_CONST.TableCloudRequest.STR_SendEinvoiceCodeT78}{MST.Replace("-", "")}");
+            await tableService.CreateTableIfNotExistsAsync();
+            var data = await tableService.ReadAsync($"{MST}:{MaThongDiep}");
+            if( data.Count!=0)
+            {
+                var objInv = new InvoiceModel();
+                objInv.fileName = (from itm in XElement.Parse(data["Data"].ToString().Decompress()).Descendants("DLieu").Descendants("HDon").Descendants("TTin") where itm.GetString("TTruong") == "PDFFileName" select itm.GetString("DLieu")).FirstOrDefault();
+                var xmlFileName = await UploadSignedXml(data["Data"].ToString().Decompress(), objInv, MST);
+                data["PDFFileName"] = xmlFileName;
+                data["STATUS"] = TVAN_CONST.STATUS_RESPONSE.SUCCESS_REQUEST;
+                await tableService.WriteAsync(data);
+            }
+        }
+
         public async Task UpdateSoThongBaoSaiSot(string MaThongDiep,string SoThongBao, string MST)
         {
             var tableService = await SPC.ServicesContainer.ShortCut.AzureTable.GetTableServiceAsync($"{TVAN_CONST.STR_StorageAccount}", $"{TVAN_CONST.TableCloudRequest.STR_SendEinvoiceErrorT78}{MST.Replace("-", "")}");

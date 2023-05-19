@@ -19,11 +19,11 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
                 //back up spc
                 if(obj.MLTDiep==MA_THONG_DIEP.RegisterInvoice || obj.MLTDiep==MA_THONG_DIEP.RecieveRegisterInvoice || obj.MLTDiep==MA_THONG_DIEP.AcceptRegisterInvoice)
                 {
-                    await PushTechnicalBackup(obj, TVAN_CONST.EventTableCloudResponse.EventRegisterInvoice);
+                    await PushTechnicalBackup(obj, TVAN_CONST.EventTableCloudResponse.EventRegisterInvoice,TaxCode);
                 }
                 if(obj.MLTDiep==MA_THONG_DIEP.SuccessRequestCodeInv ||obj.MLTDiep==MA_THONG_DIEP.ErrorRequestCodeInv)
                 {
-                    await PushTechnicalBackup(obj, TVAN_CONST.EventTableCloudResponse.EventInvoiceWithCode);
+                    await PushTechnicalBackup(obj, TVAN_CONST.EventTableCloudResponse.EventInvoiceWithCode,TaxCode);
                 }
                 
 
@@ -31,7 +31,7 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
                 var tableName = string.Format("{0}{1}", TVAN_CONST.EventTableCloudResponse.EventInvoice, TaxCode.Replace("-", ""));
                 var tableService = await SPC.ServicesContainer.ShortCut.AzureTable.GetTableServiceAsync($"{TVAN_CONST.STR_StorageAccount}", $"{tableName}");
                 await tableService.CreateTableIfNotExistsAsync();
-                var _dic =AddInsertResponseToLogEvent(obj);
+                var _dic =AddInsertResponseToLogEvent(obj,TaxCode);
                 await tableService.WriteAsync(_dic);
                 return TVAN_CONST.TAG_QUEUE.SUCCESS;
             }
@@ -41,16 +41,16 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
             } 
         }
 
-        private async Task PushTechnicalBackup(LogEventModel obj,string tableName)
+        private async Task PushTechnicalBackup(LogEventModel obj,string tableName,string TaxCode)
         {
             var tableService1 = await SPC.ServicesContainer.ShortCut.AzureTable.GetTableServiceAsync($"{TVAN_CONST.STR_StorageAccount}", $"{tableName}");
             await tableService1.CreateTableIfNotExistsAsync();
-            var _dic1 = AddInsertResponseToLogEvent(obj);
+            var _dic1 = AddInsertResponseToLogEvent(obj,TaxCode);
             await tableService1.WriteAsync(_dic1);
         }
 
         //Addinsert data to table cloud log event
-        private Dictionary<string, object> AddInsertResponseToLogEvent(LogEventModel obj)
+        private Dictionary<string, object> AddInsertResponseToLogEvent(LogEventModel obj,string TaxCode)
         {
             if (obj != null)
             {
@@ -63,7 +63,15 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
                 _dic.Add("NoiNhan", obj.NoiNhan);
                 _dic.Add("ThongDiep", obj.ThongDiep);
                 _dic.Add("NgayGiaoDich", obj.NgayGiaoDich);
-                _dic.Add("FileData", obj.FileData);
+                if(TaxCode== "0314658576")
+                {
+                    _dic.Add("FileData", "");
+                }
+                else
+                {
+                    _dic.Add("FileData", obj.FileData);
+                }
+                
                 return _dic;
             }
             return null;
