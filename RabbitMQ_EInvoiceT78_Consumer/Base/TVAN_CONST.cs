@@ -21,6 +21,9 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Base
             //Table cloud Send invoice with code
             public const string STR_SendEinvoiceCodeT78 = "EinvoiceRequestCodeT78";
 
+            //Table cloud Send invoice pos invoice
+            public const string STR_SendPOSEinvoiceCodeT78="PosEinvoiceRequestCodeT78";
+
             //Table cloud send invoice without code
             public const string STR_SendEinvoiceWithoutCodeT78 = "EinvoiceWithoutCodeT78";
 
@@ -134,6 +137,9 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Base
 
             //Error invoice report
             public const string SuccessErrorInvoiceReport = "301";
+
+            //Error incorrect format
+            public const string InCorrectFormat = "-1";
         }
 
         public class TAG_QUEUE

@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,22 +51,23 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.8.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.NetCore.1.8.10\lib\net20\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="Csla, Version=2.1.4.2, Culture=neutral, PublicKeyToken=93be5fdc093e4c30, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7c40f8a8ef7b9fe4\Csla.dll</HintPath>
+    <Reference Include="Csla">
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\Csla.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Utils.v21.1, Version=21.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v21.1, Version=21.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\DevExpress.Utils.v21.1.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetZip, Version=1.15.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\DotNetZip.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="DynamicDotNetTWAIN, Version=5.4.0.929, Culture=neutral, PublicKeyToken=298ad97013b423eb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\DynamicDotNetTWAIN.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\DynamicDotNetTWAIN.dll</HintPath>
     </Reference>
     <Reference Include="Markdig, Version=0.22.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7d3f1816e68c8464\Markdig.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\Markdig.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.2.0.6\lib\net45\Microsoft.Azure.KeyVault.dll</HintPath>
@@ -72,75 +88,76 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Business Solutions\MS Visual Studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.1.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RabbitMQ.Client, Version=6.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <HintPath>..\packages\RabbitMQ.Client.6.2.2\lib\net461\RabbitMQ.Client.dll</HintPath>
     </Reference>
     <Reference Include="Scriban, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\Scriban.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\Scriban.dll</HintPath>
     </Reference>
     <Reference Include="SendGrid, Version=9.21.1.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SendGrid.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SendGrid.dll</HintPath>
     </Reference>
     <Reference Include="SPC.CloudAuthentication, Version=4.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.CloudAuthentication.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.CloudAuthentication.dll</HintPath>
     </Reference>
     <Reference Include="SPC.CORE.Services, Version=4.7.6.996, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_8333d4e8cfb7afe4\SPC.CORE.Services.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.CORE.Services.dll</HintPath>
     </Reference>
     <Reference Include="SPC.DocumentAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.DocumentAPI.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.DocumentAPI.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Helper, Version=4.7.6.996, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Helper.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.Helper.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Mail, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Mail.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.Mail.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.Azure, Version=4.7.6.984, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.Azure.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.Phoebus.Azure.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.PAF, Version=4.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.PAF.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.Phoebus.PAF.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.PBO, Version=3.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.PBO.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.Phoebus.PBO.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.QDBO, Version=3.5.5.380, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.QDBO.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.Phoebus.QDBO.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.RE, Version=4.5.5.380, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.RE.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.Phoebus.RE.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.SOP, Version=4.5.5.380, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.SOP.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.Phoebus.SOP.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.TBO, Version=4.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.TBO.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.Phoebus.TBO.dll</HintPath>
     </Reference>
     <Reference Include="SPC.Phoebus.UsrMan, Version=4.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.Phoebus.UsrMan.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.Phoebus.UsrMan.dll</HintPath>
     </Reference>
     <Reference Include="SPC.WindowsUI.UCBase, Version=4.5.5.386, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\SPC - DEVELOPER\AppData\Local\Apps\2.0\WKQ4XB9Z.CQW\01PB4E7T.BV6\pbs...tion_a71134937d68c4d5_0004.0007_7e3d3790e39225e4\SPC.WindowsUI.UCBase.dll</HintPath>
+      <HintPath>C:\Business Solutions\MS visual studio 2005\PhoebusWIN\UI Layers\Windows Desktop\Phoebus System\bin\Debug\SPC.WindowsUI.UCBase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -197,6 +214,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RootFile\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

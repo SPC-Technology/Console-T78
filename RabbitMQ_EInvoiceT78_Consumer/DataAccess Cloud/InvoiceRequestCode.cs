@@ -42,6 +42,16 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
                 data["STATUS"] = TVAN_CONST.STATUS_RESPONSE.SUCCESS_REQUEST;
                 await tableService.WriteAsync(data);
             }
+            else
+            {
+                tableService = await SPC.ServicesContainer.ShortCut.AzureTable.GetTableServiceAsync($"{TVAN_CONST.STR_StorageAccount}", $"{TVAN_CONST.TableCloudRequest.STR_SendPOSEinvoiceCodeT78}{MST.Replace("-", "")}");
+                data = await tableService.ReadAsync($"{MST}:{MaThongDiep}");
+                if (data.Count != 0) {
+                    var objInv = new InvoiceModel();
+                    data["STATUS"] = TVAN_CONST.STATUS_RESPONSE.SUCCESS_REQUEST;
+                    await tableService.WriteAsync(data);
+                }
+            }
         }
 
         public async Task UpdateSoThongBaoSaiSot(string MaThongDiep,string SoThongBao, string MST)
@@ -90,7 +100,7 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
             //runable.Run(cmd);
             //var ret = cmd.GetOutputVariable<string>();
 
-            //Send mail to customer
+            //Send mail to customer.pdf
             //if (!String.IsNullOrEmpty(objInv.CusMail))
             //{
             //    SPC.CORE.COM.ModuleRegister.Register();

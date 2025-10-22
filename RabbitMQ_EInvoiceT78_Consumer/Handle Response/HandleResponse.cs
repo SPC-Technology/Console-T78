@@ -57,6 +57,11 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
                             var pushEvent= new DataAccess();
                             return await pushEvent.PushEventFeedBack(await HandleResponseErrorInvoiceReport(message), MST);
                         }
+                    case MA_THONG_DIEP.InCorrectFormat:
+                        {
+                            var pushEvent=new DataAccess();
+                            return await pushEvent.PushEventFeedBack(await HandleResponseContentInCorrectFormatFeedBack(message), MST);
+                        }
                 }
                 return TVAN_CONST.TAG_QUEUE.ERROR;
             }
@@ -102,6 +107,21 @@ namespace RabbitMQ_EInvoiceT78_Consumer.Handle_Response
             {
                 logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.DANHAN;
             }
+            return logObj;
+
+        }
+
+        //Handle incorrect format
+        private async Task<LogEventModel> HandleResponseContentInCorrectFormatFeedBack(string message)
+        {
+            var logObj = new Log_Event.Log_Evnet_Model.LogEventModel();
+            var doc = XElement.Parse(message);
+            var MST = (from itm in doc.Descendants("TTChung") select itm.GetString("MST")).FirstOrDefault();
+            var MaLoi = (from itm in doc.Descendants("DLieu") select itm.GetString("MLoi")).FirstOrDefault();
+            logObj = GetTTChungTechnicalFeedBack(doc);
+            logObj.NgayGiaoDich = DateTime.Now.Date.ToString("yyyy-MM-dd");
+            logObj.TrangThai = TVAN_CONST.STATUS_RESPONSE.LOI;
+            var updateStatusMaster = new RegisterInvoiceEvent();
             return logObj;
 
         }

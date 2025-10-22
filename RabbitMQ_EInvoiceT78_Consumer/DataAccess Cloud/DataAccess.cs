@@ -63,7 +63,7 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
                 _dic.Add("NoiNhan", obj.NoiNhan);
                 _dic.Add("ThongDiep", obj.ThongDiep);
                 _dic.Add("NgayGiaoDich", obj.NgayGiaoDich);
-                if(TaxCode== "0314658576")
+                if(TaxCode== "0314658576" || TaxCode== "0314673013" || TaxCode == "0314673013-001")
                 {
                     _dic.Add("FileData", "");
                 }
