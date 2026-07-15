@@ -56,9 +56,21 @@ namespace RabbitMQ_EInvoiceT78_Consumer.DataAccess_Cloud
 
         public async Task UpdateSoThongBaoSaiSot(string MaThongDiep,string SoThongBao, string MST)
         {
+            // Nothing reliable to write - never persist an empty notification number.
+            if (string.IsNullOrWhiteSpace(MST) || string.IsNullOrWhiteSpace(MaThongDiep) || string.IsNullOrWhiteSpace(SoThongBao))
+                return;
+
             var tableService = await SPC.ServicesContainer.ShortCut.AzureTable.GetTableServiceAsync($"{TVAN_CONST.STR_StorageAccount}", $"{TVAN_CONST.TableCloudRequest.STR_SendEinvoiceErrorT78}{MST.Replace("-", "")}");
             await tableService.CreateTableIfNotExistsAsync();
             var data = await tableService.ReadAsync($"{MST}:{MaThongDiep}");
+
+            // ReadAsync returns an empty dictionary when the send row does not exist yet
+            // (e.g. the desktop calls the TVAN API before persisting the row, so a fast CQT
+            // response can arrive here first). Writing that dictionary back would create a
+            // phantom row with blank PartitionKey/RowKey and silently lose the number.
+            // Pin the keys explicitly so the merge always targets the correct row.
+            data["PartitionKey"] = MST;
+            data["RowKey"] = MaThongDiep;
             data["SOTHONGBAO"] = SoThongBao;
             await tableService.WriteAsync(data);
         }
